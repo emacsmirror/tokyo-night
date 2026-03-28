@@ -57,6 +57,11 @@ You can override individual colors without forking:
 Overrides apply to all variants. See the `tokyo-*-colors-alist`
 variables in `tokyo-themes.el` for all available color names.
 
+## Design
+
+See [DESIGN.md](DESIGN.md) for the guiding principles behind color
+choices and face definitions.
+
 ## Credits
 
 The color palette is based on work by [enkia](https://github.com/enkia/tokyo-night-vscode-theme)

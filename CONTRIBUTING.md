@@ -16,6 +16,8 @@ request. Please, try to follow these guidelines when you do so.
 
 ## Pull requests
 
+* Read the [design principles][6] to understand the color semantics and
+  conventions used throughout the theme.
 * Use a topic branch to easily amend a pull request later, if necessary.
 * Write [good commit messages][2].
 * Mention related tickets in the commit messages (e.g. `[Fix #N] Add missing face for ...`).
@@ -32,3 +34,4 @@ request. Please, try to follow these guidelines when you do so.
 [3]: https://github.com/bbatsov/emacs-tokyo-themes/blob/main/CHANGELOG.md
 [4]: http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
 [5]: https://help.github.com/articles/using-pull-requests
+[6]: https://github.com/bbatsov/emacs-tokyo-themes/blob/main/DESIGN.md
