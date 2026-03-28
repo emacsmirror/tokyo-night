@@ -23,7 +23,7 @@ All four variants are included:
 ### use-package (Emacs 30+)
 
 ```emacs-lisp
-(use-package tokyo-night-theme
+(use-package tokyo-themes
   :vc (:url "https://github.com/bbatsov/emacs-tokyo-themes")
   :config
   (load-theme 'tokyo-night t))
