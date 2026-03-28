@@ -1,5 +1,7 @@
 # Tokyo Night Theme for Emacs
 
+[![CI](https://github.com/bbatsov/emacs-tokyo-themes/actions/workflows/ci.yml/badge.svg)](https://github.com/bbatsov/emacs-tokyo-themes/actions/workflows/ci.yml)
+
 A faithful Emacs port of [folke's Tokyo Night](https://github.com/folke/tokyonight.nvim) color theme.
 
 All four variants are included:
