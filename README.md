@@ -48,7 +48,7 @@ You can override individual colors without forking:
 
 ```emacs-lisp
 (setq tokyo-themes-override-colors-alist
-      '(("tn-comment" . "#636da6")))  ; brighter comments
+      '(("tokyo-comment" . "#636da6")))  ; brighter comments
 (load-theme 'tokyo-night t)
 ```
 
