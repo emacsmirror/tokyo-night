@@ -41,6 +41,12 @@
   :link '(url-link :tag "GitHub" "https://github.com/bbatsov/emacs-tokyo-themes")
   :tag "Tokyo Night")
 
+(defcustom tokyo-themes-scale-headings t
+  "Whether to scale headings in org, outline, markdown, shr, and info.
+Set to nil for uniform heading sizes.  Takes effect on theme load."
+  :type 'boolean
+  :group 'tokyo-themes)
+
 (defcustom tokyo-themes-override-colors-alist '()
   "Alist of color overrides applied to all variants.
 Each entry should be a cons cell (NAME . VALUE) where NAME is a
@@ -375,7 +381,11 @@ Light variant.")
             (tokyo-heading3      (c "tokyo-heading3"))
             (tokyo-heading4      (c "tokyo-heading4"))
             (tokyo-heading5      (c "tokyo-heading5"))
-            (tokyo-heading6      (c "tokyo-heading6")))
+            (tokyo-heading6      (c "tokyo-heading6"))
+            (h1 (if tokyo-themes-scale-headings 1.3 1.0))
+            (h2 (if tokyo-themes-scale-headings 1.2 1.0))
+            (h3 (if tokyo-themes-scale-headings 1.1 1.0))
+            (h-doc (if tokyo-themes-scale-headings 1.4 1.0)))
 
         (custom-theme-set-faces
          theme-name
@@ -648,9 +658,9 @@ Light variant.")
          `(info-menu-header ((,class (:foreground ,tokyo-fg :weight bold))))
          `(info-menu-star ((,class (:foreground ,tokyo-red))))
          `(info-node ((,class (:foreground ,tokyo-blue :weight bold))))
-         `(info-title-1 ((,class (:foreground ,tokyo-heading1 :weight bold :height 1.3))))
-         `(info-title-2 ((,class (:foreground ,tokyo-heading2 :weight bold :height 1.2))))
-         `(info-title-3 ((,class (:foreground ,tokyo-heading3 :weight bold :height 1.1))))
+         `(info-title-1 ((,class (:foreground ,tokyo-heading1 :weight bold :height ,h1))))
+         `(info-title-2 ((,class (:foreground ,tokyo-heading2 :weight bold :height ,h2))))
+         `(info-title-3 ((,class (:foreground ,tokyo-heading3 :weight bold :height ,h3))))
          `(info-title-4 ((,class (:foreground ,tokyo-heading4 :weight bold))))
          `(info-xref ((,class (:foreground ,tokyo-teal :underline t))))
          `(info-xref-visited ((,class (:foreground ,tokyo-magenta :underline t))))
@@ -682,7 +692,7 @@ Light variant.")
          `(org-date ((,class (:foreground ,tokyo-cyan :underline t))))
          `(org-document-info ((,class (:foreground ,tokyo-fg-dark))))
          `(org-document-info-keyword ((,class (:foreground ,tokyo-comment))))
-         `(org-document-title ((,class (:foreground ,tokyo-fg :weight bold :height 1.4))))
+         `(org-document-title ((,class (:foreground ,tokyo-fg :weight bold :height ,h-doc))))
          `(org-done ((,class (:foreground ,tokyo-green :weight bold))))
          `(org-drawer ((,class (:foreground ,tokyo-comment))))
          `(org-ellipsis ((,class (:foreground ,tokyo-comment :underline nil))))
@@ -751,9 +761,9 @@ Light variant.")
          `(sh-quoted-exec ((,class (:foreground ,tokyo-orange))))
 
 ;;;;; shr (eww/elfeed HTML rendering)
-         `(shr-h1 ((,class (:foreground ,tokyo-heading1 :weight bold :height 1.3))))
-         `(shr-h2 ((,class (:foreground ,tokyo-heading2 :weight bold :height 1.2))))
-         `(shr-h3 ((,class (:foreground ,tokyo-heading3 :weight bold :height 1.1))))
+         `(shr-h1 ((,class (:foreground ,tokyo-heading1 :weight bold :height ,h1))))
+         `(shr-h2 ((,class (:foreground ,tokyo-heading2 :weight bold :height ,h2))))
+         `(shr-h3 ((,class (:foreground ,tokyo-heading3 :weight bold :height ,h3))))
          `(shr-h4 ((,class (:foreground ,tokyo-heading4 :weight bold))))
          `(shr-h5 ((,class (:foreground ,tokyo-heading5 :weight bold))))
          `(shr-h6 ((,class (:foreground ,tokyo-heading6 :weight bold))))
@@ -1180,9 +1190,9 @@ Light variant.")
 
 ;;;;; markdown-mode
          `(markdown-header-face ((,class (:foreground ,tokyo-blue :weight bold))))
-         `(markdown-header-face-1 ((,class (:foreground ,tokyo-heading1 :weight bold :height 1.3))))
-         `(markdown-header-face-2 ((,class (:foreground ,tokyo-heading2 :weight bold :height 1.2))))
-         `(markdown-header-face-3 ((,class (:foreground ,tokyo-heading3 :weight bold :height 1.1))))
+         `(markdown-header-face-1 ((,class (:foreground ,tokyo-heading1 :weight bold :height ,h1))))
+         `(markdown-header-face-2 ((,class (:foreground ,tokyo-heading2 :weight bold :height ,h2))))
+         `(markdown-header-face-3 ((,class (:foreground ,tokyo-heading3 :weight bold :height ,h3))))
          `(markdown-header-face-4 ((,class (:foreground ,tokyo-heading4 :weight bold))))
          `(markdown-header-face-5 ((,class (:foreground ,tokyo-heading5 :weight bold))))
          `(markdown-header-face-6 ((,class (:foreground ,tokyo-heading6 :weight bold))))

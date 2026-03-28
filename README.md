@@ -57,6 +57,13 @@ You can override individual colors without forking:
 Overrides apply to all variants. See the `tokyo-*-colors-alist`
 variables in `tokyo-themes.el` for all available color names.
 
+To disable scaled headings in org, outline, markdown, shr, and info:
+
+```emacs-lisp
+(setq tokyo-themes-scale-headings nil)
+(load-theme 'tokyo-night t)
+```
+
 ## Design
 
 See [DESIGN.md](DESIGN.md) for the guiding principles behind color
