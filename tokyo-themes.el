@@ -6,6 +6,7 @@
 ;; URL: https://github.com/bbatsov/emacs-tokyo-themes
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "27.1"))
+;; Package-Prefix: tokyo
 ;; Keywords: faces themes
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -1556,9 +1557,7 @@ Light variant.")
          `(web-mode-current-column-highlight-face ((,class (:background ,tokyo-bg-line))))
          `(web-mode-comment-keyword-face ((,class (:foreground ,tokyo-magenta-hot :weight bold))))
          `(web-mode-sql-keyword-face ((,class (:foreground ,tokyo-cyan))))
-         `(web-mode-html-entity-face ((,class (:foreground ,tokyo-orange))))
-
-         )
+         `(web-mode-html-entity-face ((,class (:foreground ,tokyo-orange)))))
 
         (custom-theme-set-variables
          theme-name
@@ -1569,9 +1568,8 @@ Light variant.")
             ,tokyo-blue ,tokyo-magenta ,tokyo-cyan ,tokyo-line-nr-cur])
 
 ;;;;; pdf-view
-         `(pdf-view-midnight-colors '(,tokyo-fg . ,tokyo-bg))
+         `(pdf-view-midnight-colors '(,tokyo-fg . ,tokyo-bg)))))))
 
-         )))))
 
 (provide 'tokyo-themes)
 
