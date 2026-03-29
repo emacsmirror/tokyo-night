@@ -1563,6 +1563,107 @@ Light variant.")
 ;;;;; pdf-view
          `(pdf-view-midnight-colors '(,tokyo-fg . ,tokyo-bg)))))))
 
+;;; Hooks
+
+(defcustom tokyo-themes-after-load-hook nil
+  "Hook run after a Tokyo theme is loaded.
+Each function is called with the theme name (a symbol) as its
+sole argument.  Useful for applying additional customizations
+that depend on theme colors being set."
+  :type 'hook
+  :group 'tokyo-themes)
+
+;;; Palette API
+
+(defun tokyo-themes--palette-for (theme)
+  "Return the colors alist for THEME, or nil if unknown."
+  (pcase theme
+    ('tokyo-night tokyo-night-colors-alist)
+    ('tokyo-storm tokyo-storm-colors-alist)
+    ('tokyo-moon  tokyo-moon-colors-alist)
+    ('tokyo-day   tokyo-day-colors-alist)))
+
+(defun tokyo-themes-get-color (name &optional theme)
+  "Return the hex color value for NAME in the current Tokyo theme.
+NAME is a string like \"tokyo-blue\".  If THEME is given, look up
+colors in that variant's palette instead.  User overrides from
+`tokyo-themes-override-colors-alist' are respected."
+  (let* ((variant (or theme tokyo-themes--current))
+         (palette (or (tokyo-themes--palette-for variant)
+                      (error "No Tokyo theme is active")))
+         (merged (append tokyo-themes-override-colors-alist palette)))
+    (cdr (assoc name merged))))
+
+;;;###autoload
+(defmacro tokyo-themes-with-colors (&rest body)
+  "Bind all palette colors for the current Tokyo theme and evaluate BODY.
+Inside BODY, each palette color is available as a local variable,
+e.g. `tokyo-blue', `tokyo-bg', etc.
+
+Example:
+  (tokyo-themes-with-colors
+    (set-face-attribute \\='some-face nil :foreground tokyo-blue))"
+  (declare (indent 0))
+  `(let* ((--tokyo-palette
+           (append tokyo-themes-override-colors-alist
+                   (or (tokyo-themes--palette-for tokyo-themes--current)
+                       (error "No Tokyo theme is active"))))
+          ,@(mapcar (lambda (entry)
+                      `(,(intern (car entry))
+                        (cdr (assoc ,(car entry) --tokyo-palette))))
+                    tokyo-night-colors-alist))
+     ,@body))
+
+;;; Interactive Palette Viewer
+
+(defun tokyo-themes-list-colors (&optional theme)
+  "Display all palette colors for the current Tokyo theme.
+With prefix argument, prompt for THEME variant."
+  (interactive
+   (list (when current-prefix-arg
+           (intern (completing-read "Variant: "
+                                    (mapcar #'symbol-name tokyo-themes--variants)
+                                    nil t)))))
+  (let* ((variant (or theme tokyo-themes--current
+                      (error "No Tokyo theme is active")))
+         (palette (or (tokyo-themes--palette-for variant)
+                      (error "Unknown theme: %s" variant)))
+         (merged (append tokyo-themes-override-colors-alist palette))
+         (buf (get-buffer-create (format "*Tokyo Palette: %s*" variant))))
+    (with-current-buffer buf
+      (let ((inhibit-read-only t))
+        (erase-buffer)
+        (insert (format "Palette for %s\n\n" variant))
+        (dolist (entry merged)
+          (let ((name (car entry))
+                (color (cdr entry)))
+            (insert (format "  %-25s  %s  " name color))
+            (insert (propertize "  sample  "
+                                'face `(:foreground ,color)))
+            (insert (propertize "  sample  "
+                                'face `(:background ,color
+                                        :foreground ,(if (< (tokyo-themes--relative-luminance color) 0.5)
+                                                         "#ffffff" "#000000"))))
+            (insert "\n")))
+        (goto-char (point-min)))
+      (special-mode))
+    (pop-to-buffer buf)))
+
+(defun tokyo-themes--relative-luminance (hex)
+  "Return the relative luminance of HEX color string.
+Uses the WCAG 2.0 formula."
+  (let* ((rgb (color-name-to-rgb hex))
+         (r (nth 0 rgb))
+         (g (nth 1 rgb))
+         (b (nth 2 rgb))
+         (adjust (lambda (c)
+                   (if (<= c 0.03928)
+                       (/ c 12.92)
+                     (expt (/ (+ c 0.055) 1.055) 2.4)))))
+    (+ (* 0.2126 (funcall adjust r))
+       (* 0.7152 (funcall adjust g))
+       (* 0.0722 (funcall adjust b)))))
+
 ;;; User Commands
 
 (defvar tokyo-themes--current nil
@@ -1580,7 +1681,9 @@ Useful after changing `tokyo-themes-override-colors-alist' or
 manually."
   (interactive)
   (if tokyo-themes--current
-      (load-theme tokyo-themes--current t)
+      (progn
+        (load-theme tokyo-themes--current t)
+        (run-hook-with-args 'tokyo-themes-after-load-hook tokyo-themes--current))
     (user-error "No Tokyo theme is currently active")))
 
 ;;;###autoload
@@ -1591,7 +1694,8 @@ manually."
          (choice (intern (completing-read "Tokyo theme: " names nil t))))
     (mapc #'disable-theme tokyo-themes--variants)
     (load-theme choice t)
-    (setq tokyo-themes--current choice)))
+    (setq tokyo-themes--current choice)
+    (run-hook-with-args 'tokyo-themes-after-load-hook choice)))
 
 (defun tokyo-themes--set-current (theme)
   "Record THEME as the active Tokyo theme.

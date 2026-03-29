@@ -51,6 +51,9 @@ Switch between variants interactively with `M-x tokyo-themes-select`.
 After changing customization variables, apply them without restarting
 with `M-x tokyo-themes-reload`.
 
+Browse the full color palette with `M-x tokyo-themes-list-colors`
+(use `C-u` prefix to pick a specific variant).
+
 ## Customization
 
 You can override individual colors without forking:
@@ -116,6 +119,35 @@ all buffers), use `face-remap-add-relative` in a mode hook:
 These overrides are buffer-local and won't affect other modes. See
 [Buffer-Local Face Remapping with face-remap-add-relative](https://emacsredux.com/blog/2026/03/16/buffer-local-face-remapping-with-face-remap-add-relative/)
 for more details.
+
+### Using theme colors in your config
+
+The `tokyo-themes-with-colors` macro binds all palette colors as local
+variables, so you can reference them without hardcoding hex values:
+
+```emacs-lisp
+(tokyo-themes-with-colors
+  (set-face-attribute 'some-face nil :foreground tokyo-blue)
+  (setq pdf-view-midnight-colors (cons tokyo-fg tokyo-bg)))
+```
+
+You can also look up a single color programmatically:
+
+```emacs-lisp
+(tokyo-themes-get-color "tokyo-blue")  ; => "#7aa2f7"
+```
+
+### After-load hook
+
+Run custom code every time a Tokyo theme is loaded:
+
+```emacs-lisp
+(add-hook 'tokyo-themes-after-load-hook
+          (lambda (_theme)
+            (set-face-attribute 'line-number nil :slant 'italic)))
+```
+
+The hook function receives the theme name as its argument.
 
 ## Supported Packages
 
