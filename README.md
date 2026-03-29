@@ -82,6 +82,34 @@ instead of the default subtle `tokyo-bg-line`:
 (load-theme 'tokyo-night t)
 ```
 
+### Per-mode face overrides
+
+If you want to tweak faces only in specific major modes (without affecting
+all buffers), use `face-remap-add-relative` in a mode hook:
+
+```emacs-lisp
+;; Softer comments in org-mode
+(add-hook 'org-mode-hook
+          (lambda ()
+            (face-remap-add-relative 'font-lock-comment-face
+                                     :foreground "#636da6")))
+
+;; Bolder strings in python-mode
+(add-hook 'python-mode-hook
+          (lambda ()
+            (face-remap-add-relative 'font-lock-string-face
+                                     :weight 'bold)))
+
+;; Larger default font in eww
+(add-hook 'eww-mode-hook
+          (lambda ()
+            (face-remap-add-relative 'default :height 1.15)))
+```
+
+These overrides are buffer-local and won't affect other modes. See
+[Buffer-Local Face Remapping with face-remap-add-relative](https://emacsredux.com/blog/2026/03/16/buffer-local-face-remapping-with-face-remap-add-relative/)
+for more details.
+
 ## Design
 
 See [DESIGN.md](DESIGN.md) for the guiding principles behind color
