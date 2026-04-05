@@ -39,6 +39,8 @@
 
 (provide-theme 'tokyo-night)
 
+(provide 'tokyo-night-theme)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; indent-tabs-mode: nil

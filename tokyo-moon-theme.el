@@ -39,6 +39,8 @@
 
 (provide-theme 'tokyo-moon)
 
+(provide 'tokyo-moon-theme)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; indent-tabs-mode: nil

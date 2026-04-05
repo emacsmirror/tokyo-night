@@ -39,6 +39,8 @@
 
 (provide-theme 'tokyo-storm)
 
+(provide 'tokyo-storm-theme)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; indent-tabs-mode: nil
