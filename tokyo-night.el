@@ -679,6 +679,42 @@ Light variant.")
          `(message-mml ((,class (:foreground ,tokyo-green))))
          `(message-separator ((,class (:foreground ,tokyo-comment))))
 
+;;;;; mu4e
+         ;; Headers view – message flags
+         `(mu4e-unread-face ((,class (:foreground ,tokyo-blue :weight bold))))
+         `(mu4e-header-face ((,class (:foreground ,tokyo-fg-dark))))
+         `(mu4e-flagged-face ((,class (:foreground ,tokyo-yellow :weight bold))))
+         `(mu4e-draft-face ((,class (:foreground ,tokyo-orange :slant italic))))
+         `(mu4e-trashed-face ((,class (:foreground ,tokyo-comment :strike-through t))))
+         `(mu4e-replied-face ((,class (:foreground ,tokyo-dark5))))
+         `(mu4e-forwarded-face ((,class (:foreground ,tokyo-dark5))))
+         `(mu4e-related-face ((,class (:foreground ,tokyo-comment :slant italic))))
+         ;; Headers view – UI elements
+         `(mu4e-header-title-face ((,class (:foreground ,tokyo-fg :weight bold))))
+         `(mu4e-header-highlight-face ((,class (:background ,tokyo-bg-highlight :extend t))))
+         `(mu4e-header-marks-face ((,class (:foreground ,tokyo-orange :weight bold))))
+         `(mu4e-header-key-face ((,class (:foreground ,tokyo-magenta :weight bold))))
+         `(mu4e-header-field-face ((,class (:foreground ,tokyo-magenta))))
+         `(mu4e-header-value-face ((,class (:foreground ,tokyo-fg-dark))))
+         `(mu4e-special-header-value-face ((,class (:foreground ,tokyo-cyan))))
+         ;; Message view
+         `(mu4e-link-face ((,class (:foreground ,tokyo-teal :underline t))))
+         `(mu4e-contact-face ((,class (:foreground ,tokyo-blue))))
+         `(mu4e-highlight-face ((,class (:foreground ,tokyo-cyan-bright :weight bold))))
+         `(mu4e-title-face ((,class (:foreground ,tokyo-fg :weight bold))))
+         `(mu4e-url-number-face ((,class (:foreground ,tokyo-teal-dark :weight bold))))
+         `(mu4e-footer-face ((,class (:foreground ,tokyo-comment :slant italic))))
+         ;; Compose
+         `(mu4e-compose-separator-face ((,class (:foreground ,tokyo-comment))))
+         ;; System / mode-line
+         `(mu4e-modeline-face ((,class (:foreground ,tokyo-blue))))
+         `(mu4e-system-face ((,class (:foreground ,tokyo-comment :slant italic))))
+         `(mu4e-ok-face ((,class (:foreground ,tokyo-green :weight bold))))
+         `(mu4e-warning-face ((,class (:foreground ,tokyo-yellow :weight bold))))
+         `(mu4e-region-code ((,class (:background ,tokyo-bg-highlight))))
+         ;; Threading
+         `(mu4e-thread-fold-face ((,class (:foreground ,tokyo-comment :slant italic))))
+
 ;;;;; org-mode
          `(org-archived ((,class (:foreground ,tokyo-comment))))
          `(org-block ((,class (:background ,tokyo-bg-dark :extend t))))
