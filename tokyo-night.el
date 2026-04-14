@@ -715,6 +715,47 @@ Light variant.")
          ;; Threading
          `(mu4e-thread-fold-face ((,class (:foreground ,tokyo-comment :slant italic))))
 
+;;;;; notmuch
+         ;; Search view
+         `(notmuch-search-date ((,class (:foreground ,tokyo-dark5))))
+         `(notmuch-search-count ((,class (:foreground ,tokyo-comment))))
+         `(notmuch-search-subject ((,class (:foreground ,tokyo-fg))))
+         `(notmuch-search-matching-authors ((,class (:foreground ,tokyo-blue))))
+         `(notmuch-search-non-matching-authors ((,class (:foreground ,tokyo-comment))))
+         `(notmuch-search-flagged ((,class (:foreground ,tokyo-yellow :weight bold))))
+         `(notmuch-search-unread ((,class (:foreground ,tokyo-fg :weight bold))))
+         ;; Tree view
+         `(notmuch-tree-match-author-face ((,class (:foreground ,tokyo-blue))))
+         `(notmuch-tree-match-date-face ((,class (:foreground ,tokyo-dark5))))
+         `(notmuch-tree-match-subject-face ((,class (:foreground ,tokyo-fg))))
+         `(notmuch-tree-match-tree-face ((,class (:foreground ,tokyo-comment))))
+         `(notmuch-tree-match-tag-face ((,class (:foreground ,tokyo-teal))))
+         `(notmuch-tree-no-match-author-face ((,class (:foreground ,tokyo-comment))))
+         `(notmuch-tree-no-match-date-face ((,class (:foreground ,tokyo-comment))))
+         `(notmuch-tree-no-match-subject-face ((,class (:foreground ,tokyo-comment))))
+         `(notmuch-tree-no-match-tree-face ((,class (:foreground ,tokyo-fg-gutter))))
+         `(notmuch-tree-no-match-tag-face ((,class (:foreground ,tokyo-comment))))
+         ;; Show view
+         `(notmuch-message-summary-face ((,class (:foreground ,tokyo-fg-dark :background ,tokyo-bg-dark))))
+         ;; Tags
+         `(notmuch-tag-face ((,class (:foreground ,tokyo-teal))))
+         `(notmuch-tag-unread ((,class (:foreground ,tokyo-blue :weight bold))))
+         `(notmuch-tag-flagged ((,class (:foreground ,tokyo-yellow))))
+         `(notmuch-tag-deleted ((,class (:foreground ,tokyo-red :strike-through t))))
+         `(notmuch-tag-added ((,class (:foreground ,tokyo-green :underline t))))
+         ;; Wash (inline content toggling / citations)
+         `(notmuch-wash-toggle-button ((,class (:foreground ,tokyo-dark5 :background ,tokyo-bg-dark))))
+         `(notmuch-wash-cited-text ((,class (:foreground ,tokyo-comment))))
+         ;; Crypto
+         `(notmuch-crypto-part-header ((,class (:foreground ,tokyo-fg-dark))))
+         `(notmuch-crypto-signature-good ((,class (:foreground ,tokyo-green :weight bold))))
+         `(notmuch-crypto-signature-good-key ((,class (:foreground ,tokyo-green))))
+         `(notmuch-crypto-signature-bad ((,class (:foreground ,tokyo-red :weight bold))))
+         `(notmuch-crypto-signature-unknown ((,class (:foreground ,tokyo-yellow))))
+         `(notmuch-crypto-decryption ((,class (:foreground ,tokyo-cyan))))
+         ;; Hello (welcome screen)
+         `(notmuch-hello-logo-background ((,class (:background ,tokyo-bg-dark))))
+
 ;;;;; org-mode
          `(org-archived ((,class (:foreground ,tokyo-comment))))
          `(org-block ((,class (:background ,tokyo-bg-dark :extend t))))
@@ -944,6 +985,14 @@ Light variant.")
          `(smerge-refined-changed ((,class (:foreground ,tokyo-blue :background ,tokyo-diff-chg-bg :weight bold :extend t))))
 
 ;;;; Third-party packages
+;;;;; evil
+         `(evil-ex-commands ((,class (:foreground ,tokyo-fg-dark :underline t :slant italic))))
+         `(evil-ex-info ((,class (:foreground ,tokyo-red :slant italic))))
+         `(evil-ex-search ((,class (:foreground ,tokyo-bg :background ,tokyo-magenta-hot :weight bold))))
+         `(evil-ex-lazy-highlight ((,class (:foreground ,tokyo-fg :background ,tokyo-blue-dark))))
+         `(evil-ex-substitute-matches ((,class (:foreground ,tokyo-fg :background ,tokyo-blue-dark))))
+         `(evil-ex-substitute-replacement ((,class (:foreground ,tokyo-orange :underline t :weight bold))))
+
 ;;;;; avy
          `(avy-lead-face ((,class (:foreground ,tokyo-bg :background ,tokyo-magenta-hot :weight bold))))
          `(avy-lead-face-0 ((,class (:foreground ,tokyo-bg :background ,tokyo-blue :weight bold))))
