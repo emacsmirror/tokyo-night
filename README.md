@@ -149,6 +149,36 @@ Run custom code every time a Tokyo theme is loaded:
 
 The hook function receives the theme name as its argument.
 
+### Automatic light/dark switching
+
+Tokyo Night pairs well with packages that switch themes based on the time of
+day or your OS appearance setting:
+
+- [auto-dark](https://github.com/LionyxML/auto-dark-emacs) tracks your OS
+  dark/light mode and switches themes to match:
+
+```emacs-lisp
+(use-package auto-dark
+  :config
+  (setq auto-dark-dark-theme 'tokyo-night
+        auto-dark-light-theme 'tokyo-night-day)
+  (auto-dark-mode 1))
+```
+
+- [circadian](https://github.com/guidoschmidt/circadian.el) switches on a
+  time-based schedule (e.g. sunrise/sunset):
+
+```emacs-lisp
+(use-package circadian
+  :config
+  (setq circadian-themes '((:sunrise . tokyo-night-day)
+                            (:sunset  . tokyo-night)))
+  (circadian-setup))
+```
+
+See [Automatic Light/Dark Theme Switching](https://emacsredux.com/blog/2026/03/29/automatic-light-dark-theme-switching/)
+for a deeper look at both approaches.
+
 ## Supported Packages
 
 Beyond all built-in Emacs faces, the theme covers these packages:
