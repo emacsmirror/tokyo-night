@@ -494,7 +494,7 @@ Light variant.")
 ;;;;; show-paren
          `(show-paren-match ((,class (:foreground ,tokyo-cyan-pale :background ,tokyo-bracket :weight bold))))
          `(show-paren-match-expression ((,class (:background ,tokyo-bg-highlight))))
-         `(show-paren-mismatch ((,class (:foreground ,tokyo-red :background ,tokyo-bg :weight bold :underline t))))
+         `(show-paren-mismatch ((,class (:foreground ,tokyo-red :background ,tokyo-bg-highlight :weight bold :underline t))))
 
 ;;;;; completions
          `(completions-annotations ((,class (:foreground ,tokyo-comment))))
