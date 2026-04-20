@@ -646,7 +646,7 @@ Light variant.")
 ;;;;; hi-lock
          `(hi-blue ((,class (:foreground ,tokyo-bg :background ,tokyo-blue))))
          `(hi-green ((,class (:foreground ,tokyo-bg :background ,tokyo-green))))
-         `(hi-pink ((,class (:foreground ,tokyo-bg :background ,tokyo-red))))
+         `(hi-pink ((,class (:foreground ,tokyo-bg :background ,tokyo-magenta-hot))))
          `(hi-yellow ((,class (:foreground ,tokyo-bg :background ,tokyo-yellow))))
          `(hi-blue-b ((,class (:foreground ,tokyo-blue :weight bold))))
          `(hi-green-b ((,class (:foreground ,tokyo-green :weight bold))))
