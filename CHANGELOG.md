@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+## 1.0.0 (2026-04-21)
+
+### New features
+
+* Published on [MELPA](https://melpa.org/#/tokyo-night); base package
+  renamed to `tokyo-night` for MELPA namespace compliance.
+* Face coverage expanded to mu4e, notmuch, evil, plus 12 additional
+  packages.
+
+### Bug fixes
+
+* Give `show-paren-mismatch` a visible background (previously `tokyo-bg`
+  was effectively no lift).
+* Fix `hi-pink` using red background instead of pink.
+* Align `font-lock-type-face` with DESIGN.md so types are distinguishable
+  from builtins.
+
+### Documentation
+
+* Add section on automatic light/dark theme switching (auto-dark, circadian).
+
 ## 0.1.0 (2026-03-29)
 
 ### New features
